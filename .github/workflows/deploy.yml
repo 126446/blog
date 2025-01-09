@@ -25,7 +25,11 @@ jobs:
         run: npm install
         
       - name: Copy Leaflet Images
-        run: npm run copy-leaflet-images
+        run: |
+          mkdir -p public/images
+          cp node_modules/leaflet/dist/images/marker-icon-2x.png public/images/
+          cp node_modules/leaflet/dist/images/marker-icon.png public/images/
+          cp node_modules/leaflet/dist/images/marker-shadow.png public/images/
         
       - name: Build
         run: npm run build
