@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "copy-leaflet-images": "node scripts/copy-leaflet-images.js",
+    "export": "next export",
+    "deploy": "next build && touch out/.nojekyll && git add out/ && git commit -m \"Deploy\" && git subtree push --prefix out origin gh-pages"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
@@ -14,21 +17,31 @@
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.1.4",
+    "@react-three/drei": "^9.120.6",
+    "@react-three/fiber": "^8.17.12",
+    "@types/react-simple-maps": "^3.0.6",
     "framer-motion": "^11.16.1",
     "gray-matter": "^4.0.3",
+    "leaflet": "^1.9.4",
     "next": "15.1.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-leaflet": "^4.2.1",
+    "react-simple-maps": "^3.0.0",
+    "three": "^0.172.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/leaflet": "^1.9.16",
     "@types/node": "^20.17.12",
     "@types/react": "^19.0.4",
     "@types/react-dom": "^19",
+    "@types/three": "^0.172.0",
     "eslint": "^9",
     "eslint-config-next": "15.1.4",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
   }
 }

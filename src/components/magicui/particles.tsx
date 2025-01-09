@@ -22,8 +22,8 @@ interface Particle {
 
 export default function Particles({
   className = "",
-  quantity = 50,
-  ease = 50,
+  quantity = 100,
+  ease = 80,
   color = "#000000",
   refresh = false,
 }: ParticlesProps) {
