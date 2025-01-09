@@ -1,4 +1,4 @@
-import TravelMap from '@/components/TravelMap';
+import ClientTravelMap from '@/components/ClientTravelMap';
 
 export default function AboutPage() {
   return (
@@ -15,7 +15,7 @@ export default function AboutPage() {
 
         <section>
           <h2 className="text-2xl font-bold mb-6">我的足迹</h2>
-          <TravelMap />
+          <ClientTravelMap />
         </section>
 
         <section className="grid md:grid-cols-2 gap-8">
