@@ -34,8 +34,10 @@ export default function Particles({
   const mouseActive = useRef(false);
 
   useEffect(() => {
-    if (!canvasRef.current) return;
-    context.current = canvasRef.current.getContext("2d");
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    context.current = canvas.getContext("2d");
 
     const handleResize = () => {
       if (!canvasRef.current) return;
