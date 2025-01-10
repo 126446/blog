@@ -1,4 +1,14 @@
-import ClientTravelMap from '@/components/ClientTravelMap';
+import dynamic from 'next/dynamic';
+
+// 动态导入地图组件，禁用 SSR
+const ClientTravelMap = dynamic(() => import('@/components/ClientTravelMap'), {
+  ssr: false,
+  loading: () => (
+    <div className="h-[500px] w-full rounded-xl overflow-hidden shadow-lg bg-gray-100 flex items-center justify-center">
+      <p>Loading map...</p>
+    </div>
+  )
+});
 
 export default function AboutPage() {
   return (
