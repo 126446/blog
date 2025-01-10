@@ -1,7 +1,20 @@
-"use client";
+'use client';
 
 import React from 'react';
-import dynamic from 'next/dynamic';
+import { MapContainer, TileLayer, Circle, Popup } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import { Curve } from '@/components/map/Curve';
+
+// 修复 Leaflet 图标问题
+if (typeof window !== "undefined") {
+  delete (L.Icon.Default.prototype as any)._getIconUrl;
+  L.Icon.Default.mergeOptions({
+    iconRetinaUrl: '/images/marker-icon-2x.png',
+    iconUrl: '/images/marker-icon.png',
+    shadowUrl: '/images/marker-shadow.png',
+  });
+}
 
 // 定义旅行地点类型
 interface TravelLocation {
@@ -109,6 +122,10 @@ const routes = [
 ];
 
 export default function ClientTravelMap() {
+  if (typeof window === "undefined") {
+    return null; // 在服务器端返回 null
+  }
+
   return (
     <div className="h-[500px] w-full rounded-xl overflow-hidden shadow-lg">
       <MapContainer

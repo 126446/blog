@@ -1,14 +1,4 @@
-import dynamic from 'next/dynamic';
-
-// 动态导入地图组件，禁用 SSR
-const ClientTravelMap = dynamic(() => import('@/components/ClientTravelMap'), {
-  ssr: false,
-  loading: () => (
-    <div className="h-[500px] w-full rounded-xl overflow-hidden shadow-lg bg-gray-100 flex items-center justify-center">
-      <p>Loading map...</p>
-    </div>
-  )
-});
+import ClientMapWrapper from '@/components/ClientMapWrapper';
 
 export default function AboutPage() {
   return (
@@ -25,7 +15,7 @@ export default function AboutPage() {
 
         <section>
           <h2 className="text-2xl font-bold mb-6">我的足迹</h2>
-          <ClientTravelMap />
+          <ClientMapWrapper />
         </section>
 
         <section className="grid md:grid-cols-2 gap-8">
