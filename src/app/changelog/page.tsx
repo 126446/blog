@@ -4,8 +4,121 @@
 import { motion } from 'framer-motion';
 import { Tab } from '@headlessui/react';
 import { Fragment } from 'react';
-import { pageUpdates, fileUpdates } from '@/data/projects';
-import { ChangelogItem, FileUpdateItem } from '@/types/changelog';
+
+interface ChangelogItem {
+  date: string;
+  version: string;
+  changes: string[];
+  type: 'feature' | 'fix' | 'update';
+}
+
+interface FileUpdateItem {
+  date: string;
+  filename: string;
+  description: string;
+  type: 'add' | 'modify' | 'delete';
+}
+
+const pageUpdates: ChangelogItem[] = [
+  {
+    date: '2024-01-10',
+    version: '1.2.5',
+    type: 'fix',
+    changes: [
+      '在对博客页面进行Hero Parallax视差修改时，出现路由加载问题，静态资源 404 错误，所有页面无法正常显示',
+      '从github下载之前的存档，恢复到1.2.5版本'
+    ]
+  },
+  {
+    date: '2024-01-10',
+    version: '1.3.2',
+    type: 'feature',
+    changes: [
+      '使用 dynamic 导入延迟加载',
+      '使用 useMemo 缓存计算结果',
+      '使用 priority 优化图片加载',
+      '添加缓存控制和安全头',
+      '将内联样式移到外部文件',
+      '修改 WorldMap 组件使用外部样式',
+      '添加了更好的错误处理',
+      '添加了 sizes 属性优化响应式图片',
+      '改进了组件的生命周期管理',
+      '修复了 DottedMap 导入和初始化问题',
+    ]
+  },
+  {
+    date: '2024-01-10',
+    version: '1.3.1',
+    type: 'fix',
+    changes: [
+      '修复了旅行界面地图的样式',
+      '修复了主页面图标显示不完全的问题',
+      '修复了粒子不跟随鼠标移动的问题',
+    ]
+  },
+  {
+    date: '2024-01-10',
+    version: '1.3.0',
+    type: 'feature',
+    changes: [
+      '添加了滚动文本效果',
+      '添加了淡入文本效果',
+      '添加了可交互的转动信息卡片',
+      '更改菜单栏中‘关于’为‘旅游’'
+    ]
+  },
+  {
+    date: '2024-01-09',
+    version: '1.2.5',
+    type: 'feature',
+    changes: [
+      '添加了项目展示',
+      '修改项目展示为三栏',
+      '改进了导航栏交互效果'
+    ]
+  },
+  {
+    date: '2024-01-09',
+    version: '1.2.0',
+    type: 'feature',
+    changes: [
+      '实现项目分类展示系统',
+      '优化项目展示下拉菜单',
+      '添加项目详情页面'
+    ]
+  },
+  {
+    date: '2024-01-09',
+    version: '1.1.0',
+    type: 'feature',
+    changes: [
+      '添加了粒子背景效果',
+      '优化了博客文章展示样式',
+      '改进了导航栏交互效果'
+    ]
+  },
+  {
+    date: '2024-01-09',
+    version: '1.0.0',
+    type: 'update',
+    changes: [
+      '初始版本发布',
+      '完成基础博客功能',
+      '添加了文章列表和详情页'
+    ]
+  },
+  // ... 其他更新记录
+];
+
+const fileUpdates: FileUpdateItem[] = [
+  {
+    date: '2024-01-10',
+    filename: 'public\\images\\travel',
+    description: '添加旅游照片',
+    type: 'add'
+  },
+  // ... 其他文件更新记录
+];
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')

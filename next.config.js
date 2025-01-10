@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  images: { unoptimized: true },
+  images: {
+    unoptimized: true,
+    remotePatterns: [],
+  },
   basePath: '/blog',
   assetPrefix: '/blog/',
   reactStrictMode: false,
@@ -13,7 +16,7 @@ const nextConfig = {
       type: 'asset/resource'
     });
     return config;
-  }
+  },
 };
 
-module.exports = nextConfig; 
+module.exports = nextConfig;

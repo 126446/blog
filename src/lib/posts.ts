@@ -1,52 +1,36 @@
-// src/lib/posts.ts
-import { Post } from '@/types'
+export interface Post {
+  id: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  content?: string;
+}
 
-// 模拟博客文章数据
+// 示例博客文章数据
 const posts: Post[] = [
   {
-    slug: 'hello-world',
-    title: '你好，世界',
-    date: '2024-01-09',
-    excerpt: '这是我的第一篇博客文章',
-    content: `
-# 你好，世界
-
-这是我的第一篇博客文章。在这里，我将分享一些有趣的想法和经验。
-
-## 为什么要写博客？
-
-写博客可以帮助我们：
-1. 整理思路
-2. 分享知识
-3. 记录成长
-
-感谢你的阅读！
-    `
+    id: 'first-post',
+    title: '我的第一篇博客',
+    date: '2024-01-01',
+    excerpt: '这是我的第一篇博客文章，主要介绍...',
+    content: '完整的博客内容...'
   },
   {
-    slug: 'getting-started',
-    title: '开始使用 Next.js',
-    date: '2024-01-08',
-    excerpt: '学习如何使用 Next.js 构建现代化的网站',
-    content: `
-# 开始使用 Next.js
+    id: 'second-post',
+    title: '技术分享：React 最佳实践',
+    date: '2024-01-15',
+    excerpt: '分享一些 React 开发中的最佳实践和经验...',
+    content: '完整的博客内容...'
+  },
+  // 可以添加更多文章
+];
 
-Next.js 是一个流行的 React 框架，它提供了许多强大的功能...
-    `
-  }
-]
-
-export function getAllPosts(): Post[] {
+export function getAllPosts() {
   return posts.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1
-    } else {
-      return -1
-    }
-  })
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
 }
 
-export function getPostBySlug(slug: string): Post | null {
-  const post = posts.find(p => p.slug === slug)
-  return post || null
-}
+export function getPostById(id: string) {
+  return posts.find(post => post.id === id);
+} 
