@@ -1,10 +1,7 @@
-'use client';
+"use client";
 
 import React from 'react';
-import { MapContainer, TileLayer, Circle, Popup } from 'react-leaflet';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-import { Curve } from '@/components/map/Curve';
+import dynamic from 'next/dynamic';
 
 // 定义旅行地点类型
 interface TravelLocation {
