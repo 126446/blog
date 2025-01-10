@@ -3,6 +3,7 @@
 import { Suspense, lazy } from 'react';
 import Image from "next/image";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
+import ClientTravelMap from '@/components/ClientTravelMap';
 
 const WorldMap = lazy(() => import('@/components/ui/world-map').then(mod => ({ default: mod.WorldMap })));
 
@@ -217,27 +218,12 @@ export default function TravelPage() {
           旅行足迹
         </h1>
         
-        <Suspense fallback={
-          <div className="w-full aspect-[2/1] bg-gray-100 dark:bg-gray-800 rounded-lg animate-pulse flex items-center justify-center mb-16">
-            <div className="text-gray-500">地图加载中...</div>
+        <section className="my-12">
+          <h2 className="text-2xl font-bold mb-6">旅行足迹</h2>
+          <div className="w-full">
+            <ClientTravelMap />
           </div>
-        }>
-          <div className="mb-16">
-            <h2 className="text-2xl font-semibold mb-6 text-center">我的旅行地图</h2>
-            <div className="rounded-lg overflow-hidden shadow-lg">
-              <WorldMap 
-                dots={[
-                  {
-                    start: { lat: 30.5728, lng: 104.0668, label: "成都" },
-                    end: { lat: 30.5728, lng: 104.0668 }
-                  },
-                  // ... 其他城市
-                ]}
-                lineColor="#4F46E5"
-              />
-            </div>
-          </div>
-        </Suspense>
+        </section>
 
         <div className="mt-16">
           <h2 className="text-2xl font-semibold mb-6 text-center">旅行相册</h2>
